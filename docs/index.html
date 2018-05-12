@@ -21,7 +21,7 @@
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-  <!--<script type="text/javascript" src="https://cdn.rawgit.com/ethereum/web3.js/master/dist/web3.min.js"></script>-->
+  <script type="text/javascript" src="https://rawgit.com/ethereum/web3.js/1.0/dist/web3.min.js"></script>
   <script type="text/javascript" src="js/main.js"></script>
 </head>
 
@@ -46,90 +46,69 @@
     <!-- Jumbotron -->
     <div class="jumbotron">
       <div class="container">
-        <img src="hydro.jpg" alt="Hydro">
-        <h1 class="display-2">Hydr💧 Voting: Block Tank Edition</h1>
-        <p class="lead">Decentralized Voting DApp</p>
+        <h2 class="display-2">Project Hydro Presents:<br/>Block Tank 2018</h2>
+        <p class="lead">Decentralized Voting via Smart Contract</p>
       </div>
     </div>
 
-    <!-- Nav bar -->
     <div class="container">
-      <ul class="nav nav-tabs nav-fill nav-justified h2" id="navTabs" role="tablist">
-        <li class="nav-item">
-          <a class="nav-link active" id="prove-tab" data-toggle="tab" href="#prove" role="tab">ProveIt</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" id="read-tab" data-toggle="tab" href="#read" role="tab">Read</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" id="submit-tab" data-toggle="tab" href="#submit" role="tab">Submit</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" id="about-tab" data-toggle="tab" href="#about" role="tab">About</a>
-        </li>
-      </ul>
-
       <div class="tab-pane fade show active" id="prove" role="tabpanel">
-        <h4 class="text-center mt-5 mb-3">We'd be skeptical too.</h4>
-        <p class="mb-5 w-75 mx-auto">Use the form below to check whether <strong>text</strong>, a <strong>file</strong>, or <strong>hashed data</strong> have been submitted to ProveIt. Just enter the submitter's address and their claim, then click that ProveIt button!</p>
-        <form id="proveEntry">
+        <h4 class="text-center mt-5 mb-3">Welcome to Block Tank 2018!</h4>
+        <p class="mb-5 w-75 mx-auto">Today's winners will be chosen by smart contract. The QR code you recieved at the door encodes your <i>secret, unique</i> ballot. This is what will let cast your vote with this DApp! Simply scan the image with any QR code reader (most modern smartphones let you do this with your camera), and enter the number into the 'Secret Ballot' field below.</p>
+        <p class="mb-5 w-75 mx-auto"> Since voting requires you to send a transaction to the Ethereum blockchain, we've partnered with <a href="https://trustwalletapp.com/" target="_blank">Trust Wallet</a> to make this possible. Simply fill out the fields below, and click 'Vote'!</p>
+        <form id="vote">
           <div class="form-row">
-            <div class="form-group col-md-5">
+            <div class="form-group col-md-9">
               <div class="input-group">
-                <div class="input-group-addon">Address</div>
-                <input type="text" class="form-control" placeholder="0x...">
+                <div class="input-group-addon">Secret Ballot</div>
+                <input type="text" class="form-control" placeholder="4973...">
               </div>
               <small class="form-text text-muted noselect">
-                The Ethereum address of the submitter
+                The secret encoded within your QR code
               </small>
             </div>
-            <div class="form-group col-md-7">
+            <div class="form-group col-md-3">
               <div class="input-group">
-                <div class="input-group-btn">
-                  <button type="button" id="ProveItEntryToggle" class="btn btn-secondary dropdown-toggle input-group-addon" data-toggle="dropdown">Text</button>
-                  <div class="dropdown-menu">
-                    <h6 class="dropdown-header">Submission Type</h6>
-                    <div class="dropdown-divider"></div>
-                    <button class="dropdown-item" type="button">Text</button>
-                    <button class="dropdown-item" type="button">File</button>
-                    <button class="dropdown-item" type="button">Hash</button>
-                  </div>
+                <div class="input-group">
+                  <div class="input-group-addon">Candidate ID</div>
+                  <input type="text" class="form-control" placeholder="0">
                 </div>
-                <input type="text" class="form-control" placeholder="Your Message...">
               </div>
               <small class="form-text text-muted noselect">
-                The <strong>text</strong>, <strong>file</strong>, or <strong>hash</strong> that was submitted
+                Your preferred candidate's ID
               </small>
             </div>
           </div>
+
           <div class="form-row">
-            <div class="text-center form-group col-md-2 col-xl-1">
-              <button type="button" id="ProveItButton" class="h-100 btn-block btn btn-outline-primary nofocus cursor-pointer">ProveIt</button>
+            <div class="text-center form-group col-md-3 col-xl-2">
+              <button type="button" id="voteButton" class="h-100 btn-block btn btn-outline-primary nofocus cursor-pointer">Vote</button>
             </div>
             <div class="form-group col mb-0 text-center">
-              <div class="alert alert-dark noselect" role="alert">
+              <div class="alert alert-dark noselect" role="alert" id="voteOutcome">
                 &nbsp;
               </div>
             </div>
           </div>
         </form>
       </div>
+      <br/>
+      <br/>
+      <br/>
+    </div>
 
-      <!-- Footer -->
-      <footer class="footer container-fluid">
-        <img src="trust.jpg" alt="Trust">
-        <div class="d-flex justify-content-between">
-          <div class="noselect">
-            &nbsp;
-          </div>
-          <div>
-            <button id="web3Button" type="button" class="my-auto btn btn-outline-secondary nofocus cursor-pointer" data-toggle="popover" title="Web3 Provider Error" data-placement="auto" data-trigger="click" data-content="An unknown error occurred. If this problem doesn't self-correct within a few seconds, please try refreshing the page.">
-              Web3
-            </button>
-          </div>
+    <!-- Footer -->
+    <footer class="footer container-fluid">
+      <div class="d-flex justify-content-between">
+        <div class="noselect">
+          &nbsp
         </div>
-      </footer>
+        <div>
+          <img src="images/trust.png" alt="Trust" width=80 class="img-fluid">
+        </div>
+      </div>
+    </footer>
 
 
-    </body>
-    </html>
+  </body>
+  </html>
