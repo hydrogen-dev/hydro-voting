@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <title>Hydro Voting</title>
+  <meta name="description" content="Decentralized Voting via Smart Contract.">
+  <meta name="author" content="Noah Zinsmeister">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="apple-touch-icon" sizes="180x180" href="./favicons/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="./favicons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="./favicons/favicon-16x16.png">
+  <link rel="manifest" href="./favicons/manifest.json">
+  <link rel="mask-icon" href="./favicons/safari-pinned-tab.svg" color="#5bbad5">
+  <link rel="shortcut icon" href="./favicons/favicon.ico">
+  <meta name="msapplication-config" content="./favicons/browserconfig.xml">
+  <meta name="theme-color" content="#ffffff">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/main.css">
+  <script type="text/javascript" src="js/es6.js"></script>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <!--<script type="text/javascript" src="https://cdn.rawgit.com/ethereum/web3.js/master/dist/web3.min.js"></script>-->
+  <script type="text/javascript" src="js/main.js"></script>
+</head>
+
+<body>
+  <main role="main">
+    <!-- error modal -->
+    <div class="modal fade" tabindex="-1" id="errorModal" role="dialog">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title"></h5>
+          </div>
+          <div class="modal-body">
+          </div>
+          <div class="modal-footer mt-5">
+            <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Jumbotron -->
+    <div class="jumbotron">
+      <div class="container">
+        <img src="hydro.jpg" alt="Hydro">
+        <h1 class="display-2">Hydr💧 Voting: Block Tank Edition</h1>
+        <p class="lead">Decentralized Voting DApp</p>
+      </div>
+    </div>
+
+    <!-- Nav bar -->
+    <div class="container">
+      <ul class="nav nav-tabs nav-fill nav-justified h2" id="navTabs" role="tablist">
+        <li class="nav-item">
+          <a class="nav-link active" id="prove-tab" data-toggle="tab" href="#prove" role="tab">ProveIt</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="read-tab" data-toggle="tab" href="#read" role="tab">Read</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="submit-tab" data-toggle="tab" href="#submit" role="tab">Submit</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="about-tab" data-toggle="tab" href="#about" role="tab">About</a>
+        </li>
+      </ul>
+
+      <div class="tab-pane fade show active" id="prove" role="tabpanel">
+        <h4 class="text-center mt-5 mb-3">We'd be skeptical too.</h4>
+        <p class="mb-5 w-75 mx-auto">Use the form below to check whether <strong>text</strong>, a <strong>file</strong>, or <strong>hashed data</strong> have been submitted to ProveIt. Just enter the submitter's address and their claim, then click that ProveIt button!</p>
+        <form id="proveEntry">
+          <div class="form-row">
+            <div class="form-group col-md-5">
+              <div class="input-group">
+                <div class="input-group-addon">Address</div>
+                <input type="text" class="form-control" placeholder="0x...">
+              </div>
+              <small class="form-text text-muted noselect">
+                The Ethereum address of the submitter
+              </small>
+            </div>
+            <div class="form-group col-md-7">
+              <div class="input-group">
+                <div class="input-group-btn">
+                  <button type="button" id="ProveItEntryToggle" class="btn btn-secondary dropdown-toggle input-group-addon" data-toggle="dropdown">Text</button>
+                  <div class="dropdown-menu">
+                    <h6 class="dropdown-header">Submission Type</h6>
+                    <div class="dropdown-divider"></div>
+                    <button class="dropdown-item" type="button">Text</button>
+                    <button class="dropdown-item" type="button">File</button>
+                    <button class="dropdown-item" type="button">Hash</button>
+                  </div>
+                </div>
+                <input type="text" class="form-control" placeholder="Your Message...">
+              </div>
+              <small class="form-text text-muted noselect">
+                The <strong>text</strong>, <strong>file</strong>, or <strong>hash</strong> that was submitted
+              </small>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="text-center form-group col-md-2 col-xl-1">
+              <button type="button" id="ProveItButton" class="h-100 btn-block btn btn-outline-primary nofocus cursor-pointer">ProveIt</button>
+            </div>
+            <div class="form-group col mb-0 text-center">
+              <div class="alert alert-dark noselect" role="alert">
+                &nbsp;
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <!-- Footer -->
+      <footer class="footer container-fluid">
+        <img src="trust.jpg" alt="Trust">
+        <div class="d-flex justify-content-between">
+          <div class="noselect">
+            &nbsp;
+          </div>
+          <div>
+            <button id="web3Button" type="button" class="my-auto btn btn-outline-secondary nofocus cursor-pointer" data-toggle="popover" title="Web3 Provider Error" data-placement="auto" data-trigger="click" data-content="An unknown error occurred. If this problem doesn't self-correct within a few seconds, please try refreshing the page.">
+              Web3
+            </button>
+          </div>
+        </div>
+      </footer>
+
+
+    </body>
+    </html>
