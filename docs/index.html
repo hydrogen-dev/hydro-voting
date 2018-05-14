@@ -29,36 +29,29 @@
   <main role="main">
     <!-- error modal -->
     <div class="modal fade" tabindex="-1" id="errorModal" role="dialog">
-      <div class="modal-dialog modal-lg">
+      <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
         <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title"></h5>
+          <div class="mx-auto modal-header">
+            <h4 class="mx-auto modal-title"></h4>
           </div>
-          <div class="modal-body">
+          <br/>
+          <div class="w-75 text-center mx-auto modal-body">
           </div>
-          <div class="modal-footer mt-5">
-            <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Close</button>
-          </div>
+          <br/>
         </div>
       </div>
     </div>
 
-    <!-- Jumbotron -->
-    <div class="jumbotron">
-      <div class="container">
-        <h2 class="display-2">Project Hydro Presents:<br/>Block Tank 2018</h2>
-        <p class="lead">Decentralized Voting via Smart Contract</p>
-      </div>
-    </div>
-
     <div class="container">
-      <div class="tab-pane fade show active" id="prove" role="tabpanel">
-        <h4 class="text-center mt-5 mb-3">Welcome to Block Tank 2018!</h4>
-        <p class="mb-5 w-75 mx-auto">Today's winners will be chosen by smart contract. The QR code you recieved at the door encodes your <i>secret, unique</i> ballot. This is what will let cast your vote with this DApp! Simply scan the image with any QR code reader (most modern smartphones let you do this with your camera), and enter the number into the 'Secret Ballot' field below.</p>
-        <p class="mb-5 w-75 mx-auto"> Since voting requires you to send a transaction to the Ethereum blockchain, we've partnered with <a href="https://trustwalletapp.com/" target="_blank">Trust Wallet</a> to make this possible. Simply fill out the fields below, and click 'Vote'!</p>
-        <form id="vote">
+      <div id="prove">
+        <h2 class="text-center mt-5 mb-3">Welcome to Block Tank 2018!</h2>
+        <p class="text-center mb-5 w-50 mx-auto"><i>Today's winners will be chosen by smart contract.</i></p>
+        <br>
+        <p class="text-center mb-5 w-75 mx-auto">To vote, scan the QR code you received at the door (hint: point your smartphone camera at it), and enter the number as the 'Secret Ballot'. Then, enter the ID of the candidate you want to vote for.</p>
+        <p class="text-center mb-5 w-75 mx-auto">When you're ready, click 'Vote' to send your transaction to the blockchain, courtesy of our partners <a href="https://trustwalletapp.com/" target="_blank">Trust Wallet</a>.</p>
+        <form class="w-75 mx-auto" id="vote">
           <div class="form-row">
-            <div class="form-group col-md-9">
+            <div class="form-group col-md-8">
               <div class="input-group">
                 <div class="input-group-addon">Secret Ballot</div>
                 <input type="text" class="form-control" placeholder="4973...">
@@ -67,7 +60,7 @@
                 The secret encoded within your QR code
               </small>
             </div>
-            <div class="form-group col-md-3">
+            <div class="form-group col-md-4">
               <div class="input-group">
                 <div class="input-group">
                   <div class="input-group-addon">Candidate ID</div>
@@ -82,10 +75,10 @@
 
           <div class="form-row">
             <div class="text-center form-group col-md-3 col-xl-2">
-              <button type="button" id="voteButton" class="h-100 btn-block btn btn-outline-primary nofocus cursor-pointer">Vote</button>
+              <button type="button" id="voteButton" class="h-100 btn-block btn btn-primary nofocus cursor-pointer">Vote</button>
             </div>
             <div class="form-group col mb-0 text-center">
-              <div class="alert alert-dark noselect" role="alert" id="voteOutcome">
+              <div class="alert alert-light noselect" role="alert" id="voteOutcome">
                 &nbsp;
               </div>
             </div>
@@ -100,11 +93,15 @@
     <!-- Footer -->
     <footer class="footer container-fluid">
       <div class="d-flex justify-content-between">
-        <div class="noselect">
-          &nbsp
+        <div >
+          <a href="https://www.hydrogenplatform.com/" target="_blank">
+            <img src="images/hydro.png" alt="Hydro" width=40 class="margin-left img-fluid">
+          </a>
         </div>
         <div>
-          <img src="images/trust.png" alt="Trust" width=80 class="img-fluid">
+          <a href="https://trustwalletapp.com/" target="_blank">
+            <img src="images/trust.png" alt="Trust" width=80 class="margin-right img-fluid">
+          </a>
         </div>
       </div>
     </footer>

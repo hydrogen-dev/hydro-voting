@@ -13,7 +13,7 @@ HydroVoting = (function($) {
           classes = "alert-danger noselect"
           break
         case "default":
-          classes = "alert-dark noselect"
+          classes = "alert-light noselect"
           break
         case "warning":
           classes = "alert-warning noselect"
@@ -21,7 +21,7 @@ HydroVoting = (function($) {
       }
 
       alert
-        .removeClass("alert-info alert-dark alert-danger alert-success alert-warning noselect")
+        .removeClass("alert-info alert-light alert-danger alert-success alert-warning noselect")
         .addClass(classes)
         .html(text)
     },
@@ -64,9 +64,10 @@ HydroVoting = (function($) {
       //window.web3 = new Web3(web3.currentProvider)
       if (typeof web3 === 'undefined') {
         HydroVoting.launchErrorModal(
-          "No Web3 Provider Detected",
-          "Your browser is unable to interact with the blockchain, please visit the site on " +
-            "<a href='https://links.trustwalletapp.com/7YAUKYkGRM' target='_blank'>Trust Wallet</a>."
+          "Wallet Integration Required",
+          "This DApp requires the ability to send a transaction to the Ethereum blockchain. " +
+            "Please visit with the Trust Wallet App.<br/><br/>" +
+            "<a role='button' href='https://links.trustwalletapp.com/7YAUKYkGRM' class='w-50 h-100 btn btn-primary nofocus cursor-pointer'>Open with Trust</button>"
           )
       } else {
         web3 = new Web3(web3.currentProvider);
@@ -77,9 +78,9 @@ HydroVoting = (function($) {
     web3CheckOnce: function () {
       if (!web3.currentProvider.isTrust) {
         HydroVoting.launchErrorModal(
-          "Web3 Provider Warning",
-          "We recommmend that you use this DApp on Trust Wallet. " +
-          `Your current provider is: ${web3.currentProvider.constructor.name}.`
+          "Provider Warning",
+          "We recommmend that you use this DApp with the Trust Wallet App.<br/><br/>" +
+            "<a role='button' href='https://links.trustwalletapp.com/7YAUKYkGRM' class='w-50 h-100 btn btn-primary nofocus cursor-pointer'>Open with Trust</button>"
         )
       }
 
@@ -92,15 +93,15 @@ HydroVoting = (function($) {
           } else {
             HydroVoting.launchErrorModal(
               "Network Error",
-              `This DApp only supports the Ethereum mainnet, please switch your network.`
+              `You're currently on a test network. Please switch to the Ethereum mainnet.`
             )
             web3 = undefined
           }
         })
         .catch(error => {
           HydroVoting.launchErrorModal(
-            "Web3 Error",
-            `Could not detect network, please ensure that your Web3 provider is functioning correctly.`
+            "Network Error",
+            "Could not detect Ethereum network, please ensure that your browser is functioning correctly."
           )
           web3 = undefined
         })
@@ -109,8 +110,8 @@ HydroVoting = (function($) {
     initializeContracts: function () {
       var contracts = {
         Vote: {
-          abi: [{"constant":true,"inputs":[],"name":"totalVotes","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"","type":"uint256"}],"name":"candidateDirectory","outputs":[{"name":"candidateId","type":"uint256"},{"name":"candidateName","type":"string"},{"name":"candidateDescription","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"","type":"uint256"}],"name":"voteCount","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"voteName","outputs":[{"name":"","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"owner","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"nextCandidateId","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"newOwner","type":"address"}],"name":"transferOwnership","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"inputs":[{"name":"_voteName","type":"string"},{"name":"approvedHashes","type":"bytes32[]"},{"name":"_salt","type":"uint256"}],"payable":false,"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":false,"name":"candidateId","type":"uint256"}],"name":"VoteCast","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"candidateId","type":"uint256"},{"indexed":false,"name":"candidateName","type":"string"},{"indexed":false,"name":"candidateDescription","type":"string"}],"name":"CandidateRegistered","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"previousOwner","type":"address"},{"indexed":true,"name":"newOwner","type":"address"}],"name":"OwnershipTransferred","type":"event"},{"constant":false,"inputs":[{"name":"candidateName","type":"string"},{"name":"candidateDescription","type":"string"}],"name":"registerCandidate","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"candidateId","type":"uint256"}],"name":"candidateInformation","outputs":[{"name":"name","type":"string"},{"name":"description","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"secret","type":"uint256"},{"name":"candidateId","type":"uint256"}],"name":"castVote","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"}],
-          address: "0x5694751ed37352f409ba8513e44225d26407d692"
+          abi: [{"constant":true,"inputs":[],"name":"totalVotes","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"","type":"uint256"}],"name":"candidateDirectory","outputs":[{"name":"candidateId","type":"uint256"},{"name":"candidateName","type":"string"},{"name":"candidateDescription","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"","type":"uint256"}],"name":"voteCount","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"voteName","outputs":[{"name":"","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"owner","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"nextCandidateId","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"newOwner","type":"address"}],"name":"transferOwnership","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"inputs":[{"name":"_salt","type":"uint256"},{"name":"_voteName","type":"string"},{"name":"approvedHashes","type":"bytes32[]"}],"payable":false,"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":false,"name":"candidateId","type":"uint256"},{"indexed":false,"name":"candidateName","type":"string"},{"indexed":false,"name":"candidateDescription","type":"string"}],"name":"CandidateRegistered","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"candidateId","type":"uint256"}],"name":"VoteCast","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"previousOwner","type":"address"},{"indexed":true,"name":"newOwner","type":"address"}],"name":"OwnershipTransferred","type":"event"},{"constant":false,"inputs":[{"name":"candidateName","type":"string"},{"name":"candidateDescription","type":"string"}],"name":"registerCandidate","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"candidateId","type":"uint256"}],"name":"candidateInformation","outputs":[{"name":"name","type":"string"},{"name":"description","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"secret","type":"uint256"},{"name":"candidateId","type":"uint256"}],"name":"castVote","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"}],
+          address: "0x0B8E87d9Da26Db6679DFe27011b70E274Ba12493"
         }
       }
       Object.keys(contracts).map(key => {
