@@ -47,29 +47,6 @@
     min-height:calc(100% - (1.75rem * 2));
 }
 
-/* scrollable divs */
-.scrollable {
-    max-height: 500px;
-    overflow-x: hidden;
-    overflow-y: auto;
-}
-.collapsing {
-    overflow-x: hidden;
-    overflow-y: hidden;
-}
-
-.alert {
-  color: #495057;
-}
-
-.margin-left {
-  margin-left: 30px;
-}
-
-.margin-right {
-  margin-right: 30px;
-}
-
 /* Sticky footer styles */
 html {
   position: relative;
@@ -78,8 +55,5 @@ html {
 
 body {
   margin-bottom: 60px; /* Margin bottom by footer height */
-  background-image: -moz-linear-gradient(top, rgba(120,158,219,0.6) 0%, rgba(237,118,83,0.5) 100%); /* FF3.6-15 */
-  background-image: -webkit-linear-gradient(top, rgba(120,158,219,0.6) 0%,rgba(237,118,83,0.5) 100%); /* Chrome10-25,Safari5.1-6 */
-  background-image: #c5d6f0;
-  background-image: linear-gradient(to bottom, rgba(120,158,219,0.6) 0%,rgba(237,118,83,0.5) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  background: rgba(120,158,219,0.5);
 }
