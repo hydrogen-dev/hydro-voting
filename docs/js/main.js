@@ -13,7 +13,7 @@ HydroVoting = (function($) {
           classes = "alert-danger noselect"
           break
         case "default":
-          classes = "alert-light noselect"
+          classes = "alert-dark noselect"
           break
         case "warning":
           classes = "alert-warning noselect"
@@ -21,7 +21,7 @@ HydroVoting = (function($) {
       }
 
       alert
-        .removeClass("alert-info alert-light alert-danger alert-success alert-warning noselect")
+        .removeClass("alert-info alert-dark alert-danger alert-success alert-warning noselect")
         .addClass(classes)
         .html(text)
     },
@@ -43,16 +43,16 @@ HydroVoting = (function($) {
       HydroVoting.stateChange(form.find("[role='alert']"), "Loading...", "default")
 
       // call smart contract
-      try {
-        HydroVoting.Vote.methods.castVote(secret, candidate).send({ from: HydroVoting.defaultAccount, value: 0 }, transactionHash => {
+      HydroVoting.Vote.methods.castVote(secret, candidate).send({ from: HydroVoting.defaultAccount, value: 0 }, (error, transactionHash) => {
+        if (error) {
+          HydroVoting.stateChange(form.find("[role='alert']"), "Error, please try again.", "error")
+        } else {
           var txLink =
             `<a target="_blank" href="https://etherscan.io/tx/${transactionHash}" class="nounderline">` +
             'View your vote on-chain!</a>'
           HydroVoting.stateChange(form.find("[role='alert']"), txLink, "info")
-        })
-      } catch {
-        HydroVoting.stateChange(form.find("[role='alert']"), "Error, please try again.", "error")
-      }
+        }
+      })
     },
 
     initializeWeb3: function() {
