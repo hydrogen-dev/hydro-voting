@@ -44,15 +44,13 @@ HydroVoting = (function($) {
 
       // call smart contract
       HydroVoting.Vote.methods.castVote(secret, candidate).send({ from: HydroVoting.defaultAccount, value: 0 })
-        .then(receipt => {
-          console.log(receipt)
+        .on('transactionHash', transactionHash => {
           var transactionLink =
-            `<a target="_blank" href="https://etherscan.io/tx/${receipt.transactionHash}" class="nounderline">` +
+            `<a target="_blank" href="https://etherscan.io/tx/${transactionHash}" class="nounderline">` +
             'View your vote on-chain!</a>'
           HydroVoting.stateChange(form.find("[role='alert']"), transactionLink, "info")
         })
-        .catch(error => {
-          console.log(error)
+        .on('error', () => {
           HydroVoting.stateChange(form.find("[role='alert']"), "Error, please try again.", "error")
         })
     },
