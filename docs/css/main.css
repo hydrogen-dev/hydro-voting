@@ -78,12 +78,11 @@ html {
 
 body {
   margin-bottom: 60px; /* Margin bottom by footer height */
-  background: -moz-linear-gradient(rgba(120,158,219,.6), rgba(237,118,83,.3)); /* FF 3.6+ */
-  background: -ms-linear-gradient(rgba(120,158,219,.6), rgba(237,118,83,.3)); /* IE10 */
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #000000), color-stop(100%, #ffffff)); /* Safari 4+, Chrome 2+ */
-  background: -webkit-linear-gradient(rgba(120,158,219,.6), rgba(237,118,83,.3)); /* Safari 5.1+, Chrome 10+ */
-  background: -o-linear-gradient(rgba(120,158,219,.6), rgba(237,118,83,.3)); /* Opera 11.10 */
-  background: linear-gradient(rgba(120,158,219,.6), rgba(237,118,83,.3)); /* the standard */
+  background: -moz-linear-gradient(rgba(120,158,219,.6), rgba(237,118,83,.5)); /* FF 3.6+ */
+  background: -ms-linear-gradient(rgba(120,158,219,.6), rgba(237,118,83,.5)); /* IE10 */
+  background: -webkit-linear-gradient(rgba(120,158,219,.6), rgba(237,118,83,.5)); /* Safari 5.1+, Chrome 10+ */
+  background: -o-linear-gradient(rgba(120,158,219,.6), rgba(237,118,83,.5)); /* Opera 11.10 */
+  background: linear-gradient(rgba(120,158,219,.6), rgba(237,118,83,.5)); /* the standard */
   z-index: 1;
 }
 

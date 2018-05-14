@@ -67,7 +67,7 @@ HydroVoting = (function($) {
           "Wallet Integration Required",
           "This DApp requires the ability to send a transaction to the Ethereum blockchain. " +
             "Please visit with the Trust Wallet App.<br/><br/>" +
-            "<a role='button' href='https://links.trustwalletapp.com/7YAUKYkGRM' class='w-50 h-100 btn btn-primary nofocus cursor-pointer'>Open with Trust</button>"
+            "<a role='button' href='https://links.trustwalletapp.com/7YAUKYkGRM' class='w-100 h-100 btn btn-primary nofocus cursor-pointer'>Open with Trust</button>"
           )
       } else {
         web3 = new Web3(web3.currentProvider);
@@ -80,7 +80,7 @@ HydroVoting = (function($) {
         HydroVoting.launchErrorModal(
           "Provider Warning",
           "We recommmend that you use this DApp with the Trust Wallet App.<br/><br/>" +
-            "<a role='button' href='https://links.trustwalletapp.com/7YAUKYkGRM' class='w-50 h-100 btn btn-primary nofocus cursor-pointer'>Open with Trust</button>"
+            "<a role='button' href='https://links.trustwalletapp.com/7YAUKYkGRM' class='w-100 h-100 btn btn-primary nofocus cursor-pointer'>Open with Trust</button>"
         )
       }
 
